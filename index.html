@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exotic Kingdom | Clínica Veterinaria</title>
+    <title>Exotic Kingdom | Clínica Veterinaria Especializada</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -11,9 +11,9 @@
 <body>
 
     <header class="main-header">
-        <div class="container nav-container">
+        <div class="nav-container">
             <nav class="navbar">
-                <ul class="nav-list">
+                <ul class="nav-list" id="navList">
                     <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="especies.html">Servicios</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -24,11 +24,13 @@
                 <img src="logo.png" alt="Exotic Kingdom" class="logo-img-final">
             </a>
 
-            <a href="https://wa.me/51908805225" class="btn-emergency" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Citas: 908 805 225
+            <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información%20sobre%20sus%20servicios" class="btn-emergency" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">Citas: 908 805 225</span>
             </a>
             
-            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </header>
 
@@ -47,34 +49,36 @@
 
     <section class="section-padding bg-light">
         <div class="container">
-            <div class="text-center" style="margin-bottom: 50px;">
-                <h2 style="font-size: 2.2rem; color: var(--primary-color); font-weight: 700;">Bienvenidos a Exotic Kingdom</h2>
+            <div class="text-center intro-text">
+                <h2>Bienvenidos a Exotic Kingdom</h2>
                 <div class="divider"></div>
-                <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                <p>
                     Nos dedicamos a la medicina interna y cirugía de animales no convencionales y mascotas tradicionales. Sabemos que la fisiología de un conejo es muy diferente a la de un gato, y por eso contamos con la formación y el equipo necesario para cada uno.
                 </p>
             </div>
             
             <div class="services-grid">
                 <article class="service-card text-center">
-                    <div class="card-content" style="padding: 40px 30px;">
-                        <i class="fa-solid fa-stethoscope" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;"></i>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-color);">Especialización Real</h3>
+                    <div class="card-content">
+                        <i class="fa-solid fa-stethoscope icon-feature"></i>
+                        <h3>Especialización Real</h3>
                         <p>Nuestro equipo cuenta con postgrados y formación continua en medicina de fauna silvestre, animales exóticos y pequeñas especies.</p>
                     </div>
                 </article>
+
                 <article class="service-card text-center">
-                    <div class="card-content" style="padding: 40px 30px;">
-                        <i class="fa-solid fa-microscope" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;"></i>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-color);">Tecnología Avanzada</h3>
-                        <p>Equipamiento de diagnóstico y quirófano adaptado para pacientes de todos los tamaños.</p>
+                    <div class="card-content">
+                        <i class="fa-solid fa-microscope icon-feature"></i>
+                        <h3>Tecnología Avanzada</h3>
+                        <p>Equipamiento de diagnóstico y quirófano adaptado para pacientes de todos los tamaños, garantizando precisión en cada caso.</p>
                     </div>
                 </article>
+
                 <article class="service-card text-center">
-                    <div class="card-content" style="padding: 40px 30px;">
-                        <i class="fa-solid fa-heart" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;"></i>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-color);">Compromiso y Pasión</h3>
-                        <p>Tratamos a cada paciente con el mismo amor y dedicación que si fuera nuestra propia mascota.</p>
+                    <div class="card-content">
+                        <i class="fa-solid fa-heart icon-feature"></i>
+                        <h3>Compromiso y Pasión</h3>
+                        <p>Tratamos a cada paciente con el mismo amor y dedicación que si fuera nuestra propia mascota. Su bienestar es nuestra misión.</p>
                     </div>
                 </article>
             </div>
@@ -82,19 +86,30 @@
     </section>
 
     <footer class="main-footer">
-        <p>© 2026 Exotic Kingdom. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>© 2026 Exotic Kingdom. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información%20sobre%20sus%20servicios" class="btn-wsp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-<script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('.nav-list');
 
-    menuToggle.addEventListener('click', () => {
-        navList.classList.toggle('active');
-    });
-</script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navList = document.getElementById('navList');
+
+        // Abrir/Cerrar menú al tocar las 3 líneas
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Cerrar menú automáticamente al hacer clic en una opción (mejora UX)
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

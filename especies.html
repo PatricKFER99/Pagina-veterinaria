@@ -11,9 +11,9 @@
 <body>
 
     <header class="main-header">
-        <div class="container nav-container">
+        <div class="nav-container">
             <nav class="navbar">
-                <ul class="nav-list">
+                <ul class="nav-list" id="navList">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="especies.html" class="active">Servicios</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -22,10 +22,10 @@
             <a href="index.html" class="logo-center">
                 <img src="logo.png" alt="Exotic Kingdom" class="logo-img-final">
             </a>
-            <a href="https://wa.me/51908805225" class="btn-emergency">
-                <i class="fa-brands fa-whatsapp"></i> 908 805 225
+            <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información" class="btn-emergency" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">908 805 225</span>
             </a>
-            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
 
@@ -101,19 +101,29 @@
     </section>
 
     <footer class="main-footer">
-        <p>© 2024 Exotic Kingdom. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>© 2026 Exotic Kingdom. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información%20sobre%20sus%20servicios" class="btn-wsp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-<script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('.nav-list');
 
-    menuToggle.addEventListener('click', () => {
-        navList.classList.toggle('active');
-    });
-</script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navList = document.getElementById('navList');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en una opción
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
