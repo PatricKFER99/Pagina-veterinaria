@@ -26,21 +26,51 @@
                 <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">908 805 225</span>
             </a>
             <div class="menu-toggle" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0"><i class="fa-solid fa-bars"></i></div>
+
+                <!-- Navegación inferior para móviles -->
+                <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
+                    <a href="index.html" class="mb-link" id="mb-home"><i class="fa-solid fa-house mb-icon"></i><span>Inicio</span></a>
+                    <a href="especies.html" class="mb-link" id="mb-services"><i class="fa-solid fa-paw mb-icon"></i><span>Servicios</span></a>
+                    <a href="contacto.html" class="mb-link" id="mb-contact"><i class="fa-solid fa-phone mb-icon"></i><span>Contacto</span></a>
+                </nav>
         </div>
     </header>
 
-    <div class="page-header">
-        <div class="container">
-            <h1>Especies y Servicios</h1>
-            <p>Medicina especializada y Hotel para Mascotas</p>
-        </div>
-    </div>
+                function toggleMenu(e) {
+                    if (e && e.type === 'touchstart') e.preventDefault();
+                    if (!navList) return;
+                    navList.classList.toggle('active');
+                    const expanded = navList.classList.contains('active');
+                    if (menuToggle) menuToggle.setAttribute('aria-expanded', expanded);
+                }
 
-    <section class="section-padding bg-light">
-        <div class="container">
-            
-            <h3 class="category-title"><i class="fa-solid fa-feather"></i> Animales Exóticos</h3>
-            <div class="services-grid">
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', toggleMenu);
+                    menuToggle.addEventListener('touchstart', toggleMenu);
+                    menuToggle.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleMenu(e);
+                        }
+                    });
+                }
+
+                document.querySelectorAll('.nav-list a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navList) navList.classList.remove('active');
+                        if (menuToggle) menuToggle.setAttribute('aria-expanded', false);
+                    });
+                });
+
+                (function highlightMobileBottomNav(){
+                    const path = location.pathname.split('/').pop() || 'index.html';
+                    const map = { 'index.html':'mb-home', 'especies.html':'mb-services', 'contacto.html':'mb-contact' };
+                    const id = map[path];
+                    if (id) {
+                        const el = document.getElementById(id);
+                        if (el) el.classList.add('active');
+                    }
+                })();
                 <article class="service-card">
                     <img src="huron.jpg" alt="Conejos y Hurones">
                     <div class="card-content">

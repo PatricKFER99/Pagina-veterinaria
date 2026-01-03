@@ -200,3 +200,46 @@ ul { list-style: none; }
     .service-card img { height: 160px; object-fit: cover; }
     .category-title { font-size: 1.25rem; }
 }
+
+/* Navegación inferior para móviles */
+.mobile-bottom-nav {
+    display: none; /* se muestra solo en móviles */
+}
+
+@media (max-width: 900px) {
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 1200;
+        background: rgba(255,255,255,0.98);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        border-radius: 14px;
+        padding: 8px 10px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+    .mobile-bottom-nav a {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 8px 6px;
+        font-weight: 700;
+        color: var(--text-dark);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.95rem;
+    }
+    .mobile-bottom-nav a .mb-icon { font-size: 1.15rem; color: var(--primary-color); }
+    .mobile-bottom-nav a.active { background: linear-gradient(90deg,var(--primary-color),#007a67); color: #fff; }
+    .mobile-bottom-nav a.active .mb-icon { color: #fff; }
+
+    /* Ocultar hamburguesa y menú flotante si usamos barra inferior */
+    .menu-toggle { display: none !important; }
+    .nav-list { display: none !important; }
+}

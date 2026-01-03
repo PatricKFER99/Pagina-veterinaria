@@ -95,35 +95,53 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Navegación inferior para móviles -->
+    <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
+        <a href="index.html" class="mb-link" id="mb-home"><i class="fa-solid fa-house mb-icon"></i><span>Inicio</span></a>
+        <a href="especies.html" class="mb-link" id="mb-services"><i class="fa-solid fa-paw mb-icon"></i><span>Servicios</span></a>
+        <a href="contacto.html" class="mb-link" id="mb-contact"><i class="fa-solid fa-phone mb-icon"></i><span>Contacto</span></a>
+    </nav>
+
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navList = document.getElementById('navList');
 
         function toggleMenu(e) {
             if (e && e.type === 'touchstart') e.preventDefault();
+            if (!navList) return;
             navList.classList.toggle('active');
             const expanded = navList.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', expanded);
+            if (menuToggle) menuToggle.setAttribute('aria-expanded', expanded);
         }
 
-        menuToggle.addEventListener('click', toggleMenu);
-        menuToggle.addEventListener('touchstart', toggleMenu);
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMenu);
+            menuToggle.addEventListener('touchstart', toggleMenu);
+            menuToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu(e);
+                }
+            });
+        }
 
-        // Soporte por teclado (Enter / Space)
-        menuToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleMenu(e);
-            }
-        });
-
-        // Cerrar menú automáticamente al hacer clic en una opción (mejora UX)
         document.querySelectorAll('.nav-list a').forEach(link => {
             link.addEventListener('click', () => {
-                navList.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', false);
+                if (navList) navList.classList.remove('active');
+                if (menuToggle) menuToggle.setAttribute('aria-expanded', false);
             });
         });
+
+        // Destacar link activo en la barra inferior móvil
+        (function highlightMobileBottomNav(){
+            const path = location.pathname.split('/').pop() || 'index.html';
+            const map = { 'index.html':'mb-home', 'especies.html':'mb-services', 'contacto.html':'mb-contact' };
+            const id = map[path];
+            if (id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('active');
+            }
+        })();
     </script>
 </body>
 </html>
