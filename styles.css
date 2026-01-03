@@ -24,6 +24,8 @@ ul { list-style: none; }
     position: sticky; top: 0; z-index: 1000; padding: 15px 0;
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+/* asegurar referencia para posicionamiento absoluto del menú */
+.nav-container { position: relative; }
 
 /* LOGO */
 .logo-center { flex-grow: 1; display: flex; justify-content: center; }
@@ -140,6 +142,9 @@ ul { list-style: none; }
     .nav-list a { padding: 10px 0; font-size: 1rem; }
 
     .menu-toggle { display: block !important; order: 3; }
+    /* Aumentar área táctil y prioridad de clic */
+    .menu-toggle { padding: 8px 10px; border-radius: 8px; z-index: 1101; background: transparent; margin-left: 8px; cursor: pointer; }
+    .menu-toggle i { pointer-events: none; }
     
     .btn-emergency { 
         order: 2; 
