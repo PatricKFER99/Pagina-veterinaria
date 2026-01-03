@@ -88,6 +88,13 @@
     <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información%20sobre%20sus%20servicios" class="btn-wsp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
 
+    menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+</script>
 </body>
 </html>

@@ -125,13 +125,79 @@ ul { list-style: none; }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* RESPONSIVE */
-@media(max-width: 900px) {
-    .nav-list { display: none; }
-    .menu-toggle { display: block; order: 3; }
-    .btn-emergency { order: 2; padding: 8px 15px; font-size: 0.85rem; }
-    .logo-center { justify-content: flex-start; order: 1; }
-    .logo-img-final { height: 50px; }
-    .contact-wrapper { grid-template-columns: 1fr; }
-    .btn-wsp-float { width: 55px; height: 55px; font-size: 30px; bottom: 20px; right: 20px; }
+/* --- OPTIMIZACIÓN MÓVIL (TABLETS Y CELULARES) --- */
+@media (max-width: 900px) {
+    /* Ajuste de Header */
+    .nav-container {
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    /* Menú que se despliega al tocar las 3 líneas */
+    .nav-list {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    /* Clase que activa el JS */
+    .nav-list.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .btn-emergency {
+        order: 2;
+        margin-right: 10px;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    .logo-center {
+        order: 1;
+        justify-content: flex-start;
+    }
+
+    .logo-img-final {
+        height: 50px;
+    }
+
+    /* Evitar que el texto del Hero esté pegado a los bordes */
+    .hero-content h1 {
+        font-size: 2.2rem;
+        padding: 0 15px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    /* Separación de secciones en Index */
+    .section-padding {
+        padding: 50px 0; /* Un poco menos de espacio en móvil */
+    }
+
+    .services-grid {
+        gap: 20px;
+        padding: 0 15px; /* Margen a los lados de las tarjetas */
+    }
+
+    /* El formulario de contacto ya no estará pegado */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
 }
