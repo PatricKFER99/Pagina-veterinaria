@@ -28,7 +28,7 @@
                 <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">Citas: 908 805 225</span>
             </a>
             
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
@@ -99,15 +99,29 @@
         const menuToggle = document.getElementById('menuToggle');
         const navList = document.getElementById('navList');
 
-        // Abrir/Cerrar menú al tocar las 3 líneas
-        menuToggle.addEventListener('click', () => {
+        function toggleMenu(e) {
+            if (e && e.type === 'touchstart') e.preventDefault();
             navList.classList.toggle('active');
+            const expanded = navList.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', expanded);
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', toggleMenu);
+
+        // Soporte por teclado (Enter / Space)
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu(e);
+            }
         });
 
         // Cerrar menú automáticamente al hacer clic en una opción (mejora UX)
         document.querySelectorAll('.nav-list a').forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', false);
             });
         });
     </script>

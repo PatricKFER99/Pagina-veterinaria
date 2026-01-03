@@ -25,7 +25,7 @@
             <a href="https://wa.me/51908805225?text=Hola,%20requiero%20información" class="btn-emergency" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">908 805 225</span>
             </a>
-            <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+            <div class="menu-toggle" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
 
@@ -114,14 +114,27 @@
         const menuToggle = document.getElementById('menuToggle');
         const navList = document.getElementById('navList');
 
-        menuToggle.addEventListener('click', () => {
+        function toggleMenu(e) {
+            if (e && e.type === 'touchstart') e.preventDefault();
             navList.classList.toggle('active');
+            const expanded = navList.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', expanded);
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', toggleMenu);
+
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu(e);
+            }
         });
 
-        // Cerrar menú al hacer clic en una opción
         document.querySelectorAll('.nav-list a').forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', false);
             });
         });
     </script>
