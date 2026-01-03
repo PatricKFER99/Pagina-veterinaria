@@ -87,6 +87,13 @@
 
     <footer class="main-footer">
         <div class="container">
+            <div class="social-footer" style="margin-bottom: 20px;">
+                <p style="margin-bottom: 10px; font-weight: 600;">SÍGUENOS EN REDES SOCIALES</p>
+                <div style="display: flex; justify-content: center; gap: 20px; font-size: 24px;">
+                    <a href="https://web.facebook.com/profile.php?id=61552613127779&locale=es_LA" target="_blank" style="color: #1877F2;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/clinicavet.exotickingdom/" target="_blank" style="color: #E4405F;"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
             <p>© 2026 Exotic Kingdom. Todos los derechos reservados.</p>
         </div>
     </footer>
@@ -95,7 +102,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Navegación inferior para móviles -->
     <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
         <a href="index.html" class="mb-link" id="mb-home"><i class="fa-solid fa-house mb-icon"></i><span>Inicio</span></a>
         <a href="especies.html" class="mb-link" id="mb-services"><i class="fa-solid fa-paw mb-icon"></i><span>Servicios</span></a>
@@ -132,7 +138,6 @@
             });
         });
 
-        // Destacar link activo en la barra inferior móvil
         (function highlightMobileBottomNav(){
             const path = location.pathname.split('/').pop() || 'index.html';
             const map = { 'index.html':'mb-home', 'especies.html':'mb-services', 'contacto.html':'mb-contact' };
